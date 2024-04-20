@@ -30,7 +30,7 @@ def main(page: ft.Page):
     register_control = RegisterController(page, register_model)
     register_model.controller = register_control
     register_view = RegisterView(register_control, register_model)
-    routes_handler.register_route("/secundary", register_view.content)
+    routes_handler.register_route("/register", register_view.content)
 
     # Global settings for pages
     page.title = "PillTracker"
