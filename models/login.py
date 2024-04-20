@@ -6,3 +6,11 @@ class LoginModel(FletModel):
     @data
     def app_title(self):
         return "PillTracker"
+    
+    @data
+    def username(self):
+        return ""
+    
+    @data
+    def password(self):
+        return ""

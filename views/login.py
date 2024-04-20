@@ -16,12 +16,17 @@ class LoginView(FletView):
                 [
                     ft.Column([
                         ft.Text(ref=model.app_title, size=50, text_align="CENTER"),
-                        ft.TextField(label="Email", border_color="#16181b", fill_color="#1e2125",
-                                     height=50),
+                        ft.TextField(label="Username", border_color="#16181b", fill_color="#1e2125",
+                                     height=50, ref=model.username),
                         ft.TextField(label="Password", border_color="#16181b", fill_color="#1e2125",
-                                     height=50, password=True, can_reveal_password=True),
-                        ft.ElevatedButton(
-                        "Go to register view", on_click=controller.nav_register),
+                                     height=50, password=True, can_reveal_password=True, ref=model.password),
+                        ft.Row([
+                            ft.ElevatedButton(
+                            "Register", on_click=controller.nav_register),
+                            ft.ElevatedButton(
+                            "Log In", on_click=controller.validate_login),
+                        ]),
+                        
                     ],
                     alignment=ft.MainAxisAlignment.CENTER,
                     )

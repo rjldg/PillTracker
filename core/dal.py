@@ -29,19 +29,12 @@ except Exception as ex:
     print(f'Sorry failed to connect: {ex}')
 '''
 
-def validate_login(username, pw_input):
+""" DATA ACCESS LAYER """
+class DAL:
 
-  result = session.execute(func.public.validate_login(username, pw_input)).scalar()
-  print(result)
-  return result
+    def validate_login(username, pw_input):
+        result = session.execute(func.public.validate_login(username, pw_input)).scalar()
+        return result
+    
 
-username = "jpcruz"
-password = "waffle"
-
-validation_result = validate_login(username, password)
-
-if validation_result == 1:
-  print("Login Successful!")
-else:
-  print("Invalid Login Credentials")
 
