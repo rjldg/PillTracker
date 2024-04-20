@@ -33,13 +33,12 @@ def main(page: ft.Page):
     routes_handler.register_route("/register", register_view.content)
 
     # Global settings for pages
-    page.title = "PillTracker"
     theme = ft.Theme()
     platforms = ["android", "ios", "macos", "linux", "windows"]
     for platform in platforms:  # Removing animation on route change.
         setattr(theme.page_transitions, platform, ft.PageTransitionTheme.NONE)
 
-    page.title = ""
+    page.title = "PillTracker"
     page.theme = theme
     page.on_route_change = routes_handler.route_change  # route change
 

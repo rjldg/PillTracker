@@ -4,5 +4,5 @@ import flet as ft
 
 class LoginModel(FletModel):
     @data
-    def example_title(self):
-        return "This is the login view!"
+    def app_title(self):
+        return "PillTracker"
