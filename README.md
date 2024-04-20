@@ -6,9 +6,9 @@ PillTracker: A CPE106L Project
 
 ## PillTracker Database Operation Instructions:
 1. Downloading the Essentials
-  - Download the SQL File: "PillTracker_PSQL_DB.sql"
+    - Download the SQL File: "PillTracker_PSQL_DB.sql"
   - Download the .py file: "sql_connection.py"
 2. Populate the Database with Pertinent Data
 3. Use the Stored Procedures and ensure its functionality
 4. Run the "sql_connection.py"
-  - Run the .py file to determine if there is a connection
+    - Run the .py file to determine if there is a connection
