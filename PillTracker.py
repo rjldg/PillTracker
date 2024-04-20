@@ -40,6 +40,7 @@ def main(page: ft.Page):
 
     page.title = "PillTracker"
     page.theme = theme
+    page.theme_mode = "dark"
     page.on_route_change = routes_handler.route_change  # route change
 
     # Run PillTracker

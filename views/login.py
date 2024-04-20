@@ -1,12 +1,15 @@
 from flet_mvc import FletView
 import flet as ft
+import os
 
+images_folder = "images"
+image_filename = "login_bg.png"
 
 class LoginView(FletView):
     def __init__(self, controller, model):
         view = [
             ft.Container(
-                image_src='../images/login_bg.png',
+                image_src=os.path.join(os.path.dirname(__file__), "..", images_folder, image_filename),
                 image_fit=ft.ImageFit.COVER,
                 expand=True,
                 content=ft.Row(
