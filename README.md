@@ -10,5 +10,5 @@ PillTracker: A CPE106L Project
     - Download the .py file: "sql_connection.py"
 2. Populate the Database with Pertinent Data
 3. Use the Stored Procedures and ensure its functionality
-4. Run the "sql_connection.py"
+4. Open the "sql_connection.py"
     - Run the .py file to determine if there is a connection
