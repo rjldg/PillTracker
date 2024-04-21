@@ -24,7 +24,7 @@ class LoginView(FletView):
                             ft.ElevatedButton(
                             "Register", on_click=controller.nav_register),
                             ft.ElevatedButton(
-                            "Log In", on_click=controller.validate_login),
+                            "Log In" ),
                         ]),
                         
                     ],
