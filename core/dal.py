@@ -35,6 +35,3 @@ class DAL:
     def validate_login(username, pw_input):
         result = session.execute(func.public.validate_login(username, pw_input)).scalar()
         return result
-    
-
-
