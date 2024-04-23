@@ -37,7 +37,7 @@ class LoginView(FletView):
                     ], alignment=ft.MainAxisAlignment.CENTER,
                     ),
                     ft.Row([
-                        ft.Text(ref="Don't have an account? Register here")
+                        ft.Text("Don't have an account? Register here")
                     ], alignment=ft.MainAxisAlignment.CENTER,
                     ),
                 ],

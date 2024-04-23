@@ -21,7 +21,7 @@ def main(page: ft.Page):
     # Login MVC Initialization
     login_model = LoginModel()
     login_controller = LoginController(page, login_model)
-    login_model.controller = login_controller
+    # login_model.controller = login_controller
     login_view = LoginView(login_controller, login_model)
     routes_handler.register_route("/", login_view.content)
 
