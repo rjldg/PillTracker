@@ -18,7 +18,7 @@ class LoginView(FletView):
                 content=ft.Column(
                 [
                     ft.Row([
-                        ft.Text(ref=model.app_title, size=64, text_align="CENTER", font_family="Despairs")  
+                        ft.Text("PillTracker", size=64, text_align="CENTER", font_family="Despairs")  
                     ], alignment=ft.MainAxisAlignment.CENTER,
                     ),
                     ft.Row([
@@ -50,7 +50,7 @@ class LoginView(FletView):
                             ft.Container(
                                 content=ft.Text("Register here", size=12, color="#3c9fae",),
                                 ink=True,
-                                on_click=lambda e: print("shift registah"),
+                                on_click=controller.nav_register,
                             )
                         ], vertical_alignment=ft.alignment.center)
                     ], alignment=ft.MainAxisAlignment.CENTER
