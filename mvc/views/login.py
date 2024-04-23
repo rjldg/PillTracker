@@ -47,7 +47,11 @@ class LoginView(FletView):
                     ft.Row([
                         ft.Row([
                             ft.Text("Don't have an account?", size=12),
-                            ft.Text("Register here", size=12, color="#3c9fae"), # style=ft.TextStyle(decoration=ft.TextDecoration.UNDERLINE)
+                            ft.Container(
+                                content=ft.Text("Register here", size=12, color="#3c9fae",),
+                                ink=True,
+                                on_click=lambda e: print("shift registah"),
+                            )
                         ], vertical_alignment=ft.alignment.center)
                     ], alignment=ft.MainAxisAlignment.CENTER
                     ),
