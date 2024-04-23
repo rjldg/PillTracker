@@ -40,7 +40,7 @@ class LoginView(FletView):
                             alignment=ft.alignment.center,
                             border=ft.border.all(1, "#1a2440"),
                             border_radius=5,
-                            on_click=lambda e: print("I am loggin down the stairs"),
+                            on_click=controller.validate_login
                         )
                     ], alignment=ft.MainAxisAlignment.CENTER
                     ),
