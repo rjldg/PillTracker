@@ -38,6 +38,9 @@ def main(page: ft.Page):
     for platform in platforms:  # Removing animation on route change.
         setattr(theme.page_transitions, platform, ft.PageTransitionTheme.NONE)
 
+    page.fonts = {
+        "Despairs" : "font/Despairs-X3Wxo"
+    }
     page.title = "PillTracker"
     page.theme = theme
     page.theme_mode = "dark"
