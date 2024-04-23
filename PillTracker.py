@@ -21,7 +21,7 @@ def main(page: ft.Page):
     # Login MVC Initialization
     login_model = LoginModel()
     login_controller = LoginController(page, login_model)
-    login_model.controller = login_controller
+    # login_model.controller = login_controller
     login_view = LoginView(login_controller, login_model)
     routes_handler.register_route("/", login_view.content)
 
@@ -39,10 +39,10 @@ def main(page: ft.Page):
         setattr(theme.page_transitions, platform, ft.PageTransitionTheme.NONE)
 
     page.fonts = {
-        "Despairs" : "font/Despairs-X3Wxo"
+        "Despairs" : "fonts/Despairs-X3Wxo.ttf"
     }
     page.title = "PillTracker"
-    page.theme = theme
+    page.theme = ft.Theme(font_family="Gadugi")
     page.theme_mode = "dark"
     page.window_height = 720
     page.window_width = 1280
@@ -52,4 +52,4 @@ def main(page: ft.Page):
     page.go(page.route)
 
 
-ft.app(target=main)
+ft.app(target=main, assets_dir="assets")

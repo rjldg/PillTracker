@@ -22,7 +22,7 @@ class LoginView(FletView):
                     ], alignment=ft.MainAxisAlignment.CENTER,
                     ),
                     ft.Row([
-                        ft.TextField(label="Username", border_color="#16181b", fill_color="#1e2125", height=50, ref=model.username),
+                        ft.TextField(label="Username", border_color="#16181b", fill_color="#1e2125", height=50, ref=model.username, text_style=ft.TextStyle(font_family="Gadugi", color="#babbc7")),
                     ], alignment=ft.MainAxisAlignment.CENTER,
                     ),
                     ft.Row([
@@ -30,15 +30,26 @@ class LoginView(FletView):
                     ], alignment=ft.MainAxisAlignment.CENTER,
                     ),
                     ft.Row([
-                        ft.FilledButton(text="Login", style=ft.ButtonStyle(
-                            bgcolor="#2d7a9f",
-                            color="#1e2125",
-                        ))
-                    ], alignment=ft.MainAxisAlignment.CENTER,
+                        ft.Container(
+                            margin=ft.Margin(0, 20, 0, 0),
+                            gradient=ft.LinearGradient(colors=["#1c528e", "#3c9fae"], begin=ft.Alignment(0,0.5), end=ft.Alignment(1,0.5)),
+                            width=170,
+                            height=40,
+                            content=ft.Text("Login", weight=ft.FontWeight.BOLD, color="#1e2125", size=20),
+                            ink=True,
+                            alignment=ft.alignment.center,
+                            border=ft.border.all(1, "#1a2440"),
+                            border_radius=5,
+                            on_click=lambda e: print("I am loggin down the stairs"),
+                        )
+                    ], alignment=ft.MainAxisAlignment.CENTER
                     ),
                     ft.Row([
-                        ft.Text(ref="Don't have an account? Register here")
-                    ], alignment=ft.MainAxisAlignment.CENTER,
+                        ft.Row([
+                            ft.Text("Don't have an account?", size=12),
+                            ft.Text("Register here", size=12, color="#3c9fae",), # style=ft.TextStyle(decoration=ft.TextDecoration.UNDERLINE)
+                        ], vertical_alignment=ft.alignment.center)
+                    ], alignment=ft.MainAxisAlignment.CENTER
                     ),
                 ],
                 alignment=ft.MainAxisAlignment.CENTER
