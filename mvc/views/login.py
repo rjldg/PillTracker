@@ -1,8 +1,9 @@
 from flet_mvc import FletView
 import flet as ft
+import math
 import os
 
-images_folder = "images"
+images_folder = "../images"
 image_filename = "login_bg.png"
 
 class LoginView(FletView):
@@ -21,10 +22,8 @@ class LoginView(FletView):
                         ft.TextField(label="Password", border_color="#16181b", fill_color="#1e2125",
                                      height=50, password=True, can_reveal_password=True, ref=model.password),
                         ft.Row([
-                            ft.ElevatedButton(
-                            "Register", on_click=controller.nav_register),
-                            ft.ElevatedButton(
-                            "Log In", on_click=controller.validate_login),
+                            ft.ElevatedButton("Register"),
+                            ft.ElevatedButton("Log In"),
                         ]),
                         
                     ],

@@ -7,5 +7,6 @@ class RegisterView(FletView):
         view = [
             ft.Text(ref=model.example_title, size=30),
             ft.ElevatedButton("Go to login view", on_click=controller.nav_login),
+            
         ]
         super().__init__(model, view, controller)
