@@ -4,10 +4,6 @@ import flet as ft
 
 class LoginModel(FletModel):
     @data
-    def app_title(self):
-        return "PillTracker"
-    
-    @data
     def username(self):
         return ""
     
