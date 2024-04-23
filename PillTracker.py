@@ -28,7 +28,7 @@ def main(page: ft.Page):
     # Register MVC Initialization
     register_model = RegisterModel()
     register_control = RegisterController(page, register_model)
-    # register_model.controller = register_control
+    register_model.controller = register_control
     register_view = RegisterView(register_control, register_model)
     routes_handler.register_route("/register", register_view.content)
 
