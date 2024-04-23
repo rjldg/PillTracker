@@ -26,7 +26,7 @@ class LoginView(FletView):
                     ], alignment=ft.MainAxisAlignment.CENTER,
                     ),
                     ft.Row([
-                        ft.TextField(label="Password", border_color="#16181b", fill_color="#1e2125", height=50, ref=model.password),
+                        ft.TextField(label="Password", border_color="#16181b", fill_color="#1e2125", height=50, ref=model.password, password=True, can_reveal_password=True),
                     ], alignment=ft.MainAxisAlignment.CENTER,
                     ),
                     ft.Row([
@@ -40,14 +40,14 @@ class LoginView(FletView):
                             alignment=ft.alignment.center,
                             border=ft.border.all(1, "#1a2440"),
                             border_radius=5,
-                            on_click=lambda e: print("I am loggin down the stairs"),
+                            on_click=controller.validate_login
                         )
                     ], alignment=ft.MainAxisAlignment.CENTER
                     ),
                     ft.Row([
                         ft.Row([
                             ft.Text("Don't have an account?", size=12),
-                            ft.Text("Register here", size=12, color="#3c9fae",), # style=ft.TextStyle(decoration=ft.TextDecoration.UNDERLINE)
+                            ft.Text("Register here", size=12, color="#3c9fae"), # style=ft.TextStyle(decoration=ft.TextDecoration.UNDERLINE)
                         ], vertical_alignment=ft.alignment.center)
                     ], alignment=ft.MainAxisAlignment.CENTER
                     ),
