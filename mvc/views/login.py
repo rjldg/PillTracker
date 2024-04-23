@@ -39,14 +39,15 @@ class LoginView(FletView):
                             ink=True,
                             alignment=ft.alignment.center,
                             border=ft.border.all(1, "#1a2440"),
-                            border_radius=5
+                            border_radius=5,
+                            on_click=lambda e: print("I am loggin down the stairs"),
                         )
                     ], alignment=ft.MainAxisAlignment.CENTER
                     ),
                     ft.Row([
                         ft.Row([
                             ft.Text("Don't have an account?", size=12),
-                            ft.Text("Register here", size=12, color="#3c9fae"),
+                            ft.Text("Register here", size=12, color="#3c9fae",), # style=ft.TextStyle(decoration=ft.TextDecoration.UNDERLINE)
                         ], vertical_alignment=ft.alignment.center)
                     ], alignment=ft.MainAxisAlignment.CENTER
                     ),
