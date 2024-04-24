@@ -2,17 +2,13 @@ from flet_mvc import FletView
 import flet as ft
 import math
 import os
-
-images_folder = "../images"
-image_filename = "login_bg.png"
+from user_controls import *
 
 class LoginView(FletView):
     def __init__(self, controller, model):
-        
-
         view = [
             ft.Container(
-                image_src=os.path.join(os.path.dirname(__file__), "..", images_folder, image_filename),
+                image_src=f"/images/login_bg.png",
                 image_fit=ft.ImageFit.COVER,
                 expand=True,
                 content=ft.Column(
@@ -30,18 +26,7 @@ class LoginView(FletView):
                     ], alignment=ft.MainAxisAlignment.CENTER,
                     ),
                     ft.Row([
-                        ft.Container(
-                            margin=ft.Margin(0, 20, 0, 0),
-                            gradient=ft.LinearGradient(colors=["#1c528e", "#3c9fae"], begin=ft.Alignment(0,0.5), end=ft.Alignment(1,0.5)),
-                            width=170,
-                            height=40,
-                            content=ft.Text("Login", weight=ft.FontWeight.BOLD, color="#1e2125", size=20),
-                            ink=True,
-                            alignment=ft.alignment.center,
-                            border=ft.border.all(1, "#1a2440"),
-                            border_radius=5,
-                            on_click=controller.validate_login
-                        )
+                        pt_button.Button(in_text="Login", on_click=controller.validate_login),
                     ], alignment=ft.MainAxisAlignment.CENTER
                     ),
                     ft.Row([
