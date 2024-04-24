@@ -18,15 +18,15 @@ class LoginView(FletView):
                     ], alignment=ft.MainAxisAlignment.CENTER,
                     ),
                     ft.Row([
-                        ft.TextField(label="Username", border_color="#16181b", fill_color="#1e2125", height=50, ref=model.username, text_style=ft.TextStyle(font_family="Gadugi", color="#babbc7")),
+                        pt_textfield.Field(label="Username", model=model.username)
                     ], alignment=ft.MainAxisAlignment.CENTER,
                     ),
                     ft.Row([
-                        ft.TextField(label="Password", border_color="#16181b", fill_color="#1e2125", height=50, ref=model.password, password=True, can_reveal_password=True),
+                        pt_textfield.Field(label="Password", model=model.password, have_password=True)
                     ], alignment=ft.MainAxisAlignment.CENTER,
                     ),
                     ft.Row([
-                        pt_button.Button(in_text="Login", on_click=controller.validate_login),
+                        pt_button.Button(text="Login", on_click=controller.validate_login),
                     ], alignment=ft.MainAxisAlignment.CENTER
                     ),
                     ft.Row([
