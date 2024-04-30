@@ -8,7 +8,7 @@ class Control(ft.Container):
             border=ft.border.all(1, "#000000"),
             border_radius=ft.border_radius.all(10),
             padding=ft.padding.only(left=30, right=30, top=20, bottom=20),
-            width=250,
+            width=300,
             content=ft.Column([
                 ft.Text(medname, color="#e2e7ea", size=24, weight=ft.FontWeight.BOLD),
                 ft.Text(f"{dailyintake} times a day", color="#e2e7ea", size=14,),
