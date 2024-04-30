@@ -13,9 +13,13 @@ class ScheduleView(FletView):
                 ft.Column([
                     pt_navbar.Navbar(title="Schedule",to_home=controller.nav_home, to_schedule=controller.nav_schedule),
                     ft.Container(padding=ft.padding.symmetric(horizontal=70, vertical=20), content=
-                        ft.ResponsiveRow([
-
-                        ])
+                        ft.Row([
+                            pt_schedule.Control(medname="Darkacetamol", dailyintake=3, totalpills=100),
+                            pt_schedule.Control(medname="Blackezol", dailyintake=1, totalpills=50),
+                            pt_schedule.Control(medname="Anti-Gluthathione", dailyintake=2, totalpills=50),
+                            pt_schedule.Control(medname="Gyatticin", dailyintake=1, totalpills=20),
+                            pt_schedule.Control(medname="Solar-Crispy Burn", dailyintake=5, totalpills=200),
+                        ], wrap=True)
                     )
                 ])
             )

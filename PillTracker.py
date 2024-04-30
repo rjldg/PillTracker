@@ -29,7 +29,7 @@ def main(page: ft.Page):
     login_controller = LoginController(page, login_model)
     login_model.controller = login_controller
     login_view = LoginView(login_controller, login_model)
-    routes_handler.register_route("/home", login_view.content)
+    routes_handler.register_route("/schedule", login_view.content)
 
     # Register MVC Initialization
     register_model = RegisterModel()
@@ -43,14 +43,14 @@ def main(page: ft.Page):
     home_control = HomeController(page, home_model)
     home_model.controller = home_control
     home_view = HomeView(home_control, home_model)
-    routes_handler.register_route("/", home_view.content)
+    routes_handler.register_route("/home", home_view.content)
 
     # Schedule MVC Initialization
     schedule_model = ScheduleModel()
     schedule_control = ScheduleController(page, schedule_model)
     schedule_model.controller = schedule_control
     schedule_view = ScheduleView(schedule_control, schedule_model)
-    routes_handler.register_route("/schedule", schedule_view.content)
+    routes_handler.register_route("/", schedule_view.content)
 
     # Global settings for pages
     theme = ft.Theme()
