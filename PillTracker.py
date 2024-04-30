@@ -5,16 +5,19 @@ from flet_mvc import RouteHandler
 from mvc.models.login import LoginModel
 from mvc.models.register import RegisterModel
 from mvc.models.home import HomeModel
+from mvc.models.schedule import ScheduleModel
 
 # Views
 from mvc.views.login import LoginView
 from mvc.views.register import RegisterView
 from mvc.views.home import HomeView
+from mvc.views.schedule import ScheduleView
 
 # Controllers
 from mvc.controllers.login import LoginController
 from mvc.controllers.register import RegisterController
 from mvc.controllers.home import HomeController
+from mvc.controllers.schedule import ScheduleController
 
 
 def main(page: ft.Page):
@@ -35,12 +38,19 @@ def main(page: ft.Page):
     register_view = RegisterView(register_control, register_model)
     routes_handler.register_route("/register", register_view.content)
 
-    # Register MVC Initialization
+    # Home MVC Initialization
     home_model = HomeModel()
     home_control = HomeController(page, home_model)
     home_model.controller = home_control
     home_view = HomeView(home_control, home_model)
     routes_handler.register_route("/", home_view.content)
+
+    # Schedule MVC Initialization
+    schedule_model = ScheduleModel()
+    schedule_control = ScheduleController(page, schedule_model)
+    schedule_model.controller = schedule_control
+    schedule_view = ScheduleView(schedule_control, schedule_model)
+    routes_handler.register_route("/schedule", schedule_view.content)
 
     # Global settings for pages
     theme = ft.Theme()

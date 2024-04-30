@@ -13,7 +13,7 @@ class HomeView(FletView):
                 gradient=ft.LinearGradient(colors=["#1e2125", "#201925", "#1e2125"], rotation=math.degrees(-33)),
                 content=
                 ft.Column([
-                    pt_navbar.Navbar(to_home=controller.nav_home, to_schedule=controller.nav_schedule),
+                    pt_navbar.Navbar(title="Home",to_home=controller.nav_home, to_schedule=controller.nav_schedule),
                     ft.Container(padding=ft.padding.symmetric(horizontal=70, vertical=20), content=
                         ft.ResponsiveRow([
                             ft.Column([

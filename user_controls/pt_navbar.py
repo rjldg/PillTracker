@@ -1,7 +1,7 @@
 import flet as ft
 
 class Navbar(ft.ResponsiveRow):
-    def __init__(self, to_home, to_schedule):
+    def __init__(self, title:str, to_home, to_schedule):
         navbar_content = ft.Container(
             padding=ft.padding.symmetric(horizontal=70),
             content=
@@ -10,7 +10,7 @@ class Navbar(ft.ResponsiveRow):
                 height=70,
                 controls=[
                     ft.Column([
-                        ft.Text("Home", size=32, weight=ft.FontWeight.BOLD, color="#e2e7ea", text_align=ft.TextAlign.CENTER),
+                        ft.Text(title, size=32, weight=ft.FontWeight.BOLD, color="#e2e7ea", text_align=ft.TextAlign.CENTER),
                     ], col=8, alignment=ft.MainAxisAlignment.CENTER),
                     ft.Column([
                         ft.Container(
