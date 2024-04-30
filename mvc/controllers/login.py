@@ -13,5 +13,6 @@ class LoginController(FletController):
 
         if isValid == 1:
             self.alert("Login Success", alert.SUCCESS)
+            self.page.go("/home")
         else:
             self.alert("Login Failed", alert.WARNING)
