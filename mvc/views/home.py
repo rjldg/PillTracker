@@ -5,38 +5,7 @@ from user_controls import *
 
 class HomeView(FletView):
     def __init__(self, controller, model):
-        adherance_data = [
-            ft.LineChartData(
-                data_points=[
-                    ft.LineChartDataPoint(1,5),
-                    ft.LineChartDataPoint(2,6),
-                    ft.LineChartDataPoint(3,4),
-                    ft.LineChartDataPoint(4,5),
-                    ft.LineChartDataPoint(5,5),
-                    ft.LineChartDataPoint(6,8),
-                    ft.LineChartDataPoint(7,7),
-                ],
-                stroke_width=2,
-                stroke_cap_round=False,
-                curved=False,
-                color="#2e3192",
-            ),
-            ft.LineChartData(
-                data_points=[
-                    ft.LineChartDataPoint(1,5),
-                    ft.LineChartDataPoint(2,5),
-                    ft.LineChartDataPoint(3,4),
-                    ft.LineChartDataPoint(4,6),
-                    ft.LineChartDataPoint(5,4),
-                    ft.LineChartDataPoint(6,10),
-                    ft.LineChartDataPoint(7,5),
-                ],
-                stroke_width=2,
-                stroke_cap_round=False,
-                curved=False,
-                color="#0072bc",
-            ),
-        ]
+        adh_data = chart_data.AdhData(expected_datapoints=[5,6,4,5,5,8,7], actual_datapoints=[5,5,4,6,4,10,5])
 
         view = [
             ft.Container(
@@ -52,24 +21,26 @@ class HomeView(FletView):
                                 pt_pilltaken.Control(medname="Darkacetamol"),
                                 pt_pilltaken.Control(medname="Blackezol", defaultvalue=2),
                                 pt_pilltaken.Control(medname="Anti-Gluthathione", defaultvalue=1),
-                                pt_pilltaken.Control(medname="Darkacetamol"),
-                                pt_pilltaken.Control(medname="Blackezol", defaultvalue=2),
-                                pt_pilltaken.Control(medname="Anti-Gluthathione", defaultvalue=1),
-                                pt_pilltaken.Control(medname="Darkacetamol"),
-                                pt_pilltaken.Control(medname="Blackezol", defaultvalue=2),
-                                pt_pilltaken.Control(medname="Anti-Gluthathione", defaultvalue=1),
-                                pt_pilltaken.Control(medname="Darkacetamol"),
-                                pt_pilltaken.Control(medname="Blackezol", defaultvalue=2),
-                                pt_pilltaken.Control(medname="Anti-Gluthathione", defaultvalue=1),
+                                ft.Text("Adherance Statistics", size=24, weight=ft.FontWeight.BOLD, color="#e2e7ea"),
+                                ft.LineChart(
+                                    data_series=adh_data.adherance_data,
+                                    border=ft.border.only(bottom=ft.BorderSide(4, "#e2e7ea"), left=ft.BorderSide(4, "#e2e7ea")),
+                                    min_y=0,
+                                    max_y=10,
+                                    min_x=1,
+                                    max_x=7,
+                                    left_axis=ft.ChartAxis(
+                                        labels=adh_data.y_labels,
+                                        labels_size=12,
+                                    ),
+                                    bottom_axis=ft.ChartAxis(
+                                        labels=adh_data.x_labels
+                                    )
+                                )
                             ], col=8),
                             ft.Column([
                                 ft.Text("Refill Reminder", size=24, weight=ft.FontWeight.BOLD, color="#e2e7ea"),
                                 ft.Text("All your pill bottles are plenty enough, take more!", size=16,color="#e2e7ea", italic=True),
-                                ft.Text("Adherance", size=24, weight=ft.FontWeight.BOLD, color="#e2e7ea"),
-                                ft.LineChart(
-                                    data_series=adherance_data,
-                                    border=ft.border.only(bottom=ft.BorderSide(4, "#e2e7ea"), left=ft.BorderSide(4, "#e2e7ea"))
-                                )
                             ], col=4)
                         ], spacing=50)
 
