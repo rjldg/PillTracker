@@ -109,6 +109,7 @@ class AccountView(FletView):
                     ),
 
                     ft.Row([
+                        pt_button.Button(text="Sign Out", on_click=controller.nav_login, btn_type="warning"),
                         pt_button.Button(text="Cancel", on_click=controller.nav_home, btn_type="secondary"),
                         pt_button.Button(text="Confirm", on_click=controller.dummy_func,)
                     ], alignment=ft.MainAxisAlignment.CENTER
