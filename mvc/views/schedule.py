@@ -47,7 +47,7 @@ class ScheduleView(FletView):
                 content=
                 ft.Stack([
                     ft.Column([
-                        pt_navbar.Navbar(title="Schedule",to_home=controller.nav_home, to_schedule=controller.nav_schedule),
+                        pt_navbar.Navbar(title="Schedule",to_home=controller.nav_home, to_schedule=controller.nav_schedule, to_account=controller.nav_account),
                         ft.Container(padding=ft.padding.symmetric(horizontal=70, vertical=20), expand=True, alignment=ft.alignment.top_center ,content=
                             ft.Row(controls=schedule_list, wrap=True, expand=True, scroll=ft.ScrollMode.AUTO)
                         ),

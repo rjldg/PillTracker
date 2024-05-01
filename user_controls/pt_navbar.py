@@ -1,7 +1,7 @@
 import flet as ft
 
 class Navbar(ft.ResponsiveRow):
-    def __init__(self, title:str, to_home, to_schedule):
+    def __init__(self, title:str, to_home, to_schedule, to_account):
         navbar_content = ft.Container(
             padding=ft.padding.symmetric(horizontal=70),
             content=
@@ -11,7 +11,7 @@ class Navbar(ft.ResponsiveRow):
                 controls=[
                     ft.Column([
                         ft.Text(title, size=32, weight=ft.FontWeight.BOLD, color="#e2e7ea", text_align=ft.TextAlign.CENTER),
-                    ], col=8, alignment=ft.MainAxisAlignment.CENTER),
+                    ], col=7, alignment=ft.MainAxisAlignment.CENTER),
                     ft.Column([
                         ft.Container(
                             content=ft.Text("Home", size=24, color="#e2e7ea"),
@@ -28,6 +28,14 @@ class Navbar(ft.ResponsiveRow):
                             on_click=to_schedule,
                         ),
                     ], col=2),
+                    ft.Column([
+                        ft.Container(
+                            content=ft.Image(src="/images/account_circle.png"),
+                            ink=True, margin=ft.Margin(left=20, right=20, top=0, bottom=0),
+                            width=70, height=70, alignment=ft.alignment.center,
+                            on_click=to_account,
+                        ),
+                    ], col=1),
                 ]
             )
         )

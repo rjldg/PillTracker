@@ -1,7 +1,7 @@
 from flet_mvc import FletController
 import flet as ft
 
-class ScheduleController(FletController):
+class AccountController(FletController):
     def reload(self):
         self.page.update()
     
