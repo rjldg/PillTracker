@@ -34,14 +34,22 @@ class Navbar(ft.ResponsiveRow):
 
         navbar_stack = ft.Stack(
             col=12,
-            controls=[ft.Container(
-                bgcolor="#1e2125", 
-                blend_mode=ft.BlendMode.COLOR_DODGE, 
-                height=70
-            ), 
-            ft.Container(
-                content=navbar_content
-            )]
+            controls=[
+                # ft.Container(
+                #     shadow=ft.BoxShadow(spread_radius=10, blur_radius=30, color="#000000"),
+                #     height=70,
+                #     bgcolor=ft.colors.TRANSPARENT,
+                #     opacity=0.17,
+                # ),
+                ft.Container(
+                    bgcolor="#1e2125", 
+                    blend_mode=ft.BlendMode.COLOR_DODGE, 
+                    height=70
+                ), 
+                ft.Container(
+                    content=navbar_content
+                )
+            ]
         )
 
         super().__init__(
