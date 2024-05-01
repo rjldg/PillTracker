@@ -16,3 +16,4 @@ class ScheduleController(FletController):
     
     def dummy_func(self, e):
         self.alert("ssh-keygen")
+    

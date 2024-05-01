@@ -41,4 +41,20 @@ class Button(ft.Container):
                 content=ft.Text(text, weight=ft.FontWeight.NORMAL, color="#e2e7ea", size=20),
                 gradient=ft.LinearGradient(colors=["#1e2125", "#1e2125"], begin=ft.Alignment(0,0.5), end=ft.Alignment(1,0.5)), 
             )
+
+class FloatingButton(ft.Container):
+    def __init__(self, on_click):
+        super().__init__(
+            bgcolor="#3c9fae", 
+            border_radius=ft.border_radius.all(255),
+            content=ft.Text("+", weight=ft.FontWeight.BOLD, color="#e2e7ea", size=24),
+            width=50,
+            height=50,
+            alignment=ft.alignment.center,
+            ink=True,
+            on_click=on_click,
+            margin=ft.margin.all(20),
+            right=0,
+            bottom=0,
+        )
         

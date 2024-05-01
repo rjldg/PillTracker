@@ -37,7 +37,6 @@ class ScheduleView(FletView):
                 create_view.offset = ft.transform.Offset(-1,0)
                 create_view_overlay.opacity = 0
                 create_view_overlay.visible = False
-                
             controller.reload()
 
         # for main schedule page
@@ -48,27 +47,23 @@ class ScheduleView(FletView):
                 ft.Stack([
                     ft.Column([
                         pt_navbar.Navbar(title="Schedule",to_home=controller.nav_home, to_schedule=controller.nav_schedule, to_account=controller.nav_account),
+                        ft.Container(content=ft.SearchBar(
+                            divider_color="#3c9fae",
+                            bar_hint_text="Search for Pills",
+                            bar_bgcolor="#1e2125",
+                            bar_overlay_color="#3c9fae",
+                            height=35,
+                            expand=True,
+                        ), alignment=ft.alignment.center, margin=ft.margin.only(top=10), expand=True,),
                         ft.Container(padding=ft.padding.symmetric(horizontal=70, vertical=20), expand=True, alignment=ft.alignment.top_center ,content=
-                            ft.Row(controls=schedule_list, wrap=True, expand=True, scroll=ft.ScrollMode.AUTO)
+                            ft.Row(controls=schedule_list, wrap=True, scroll=ft.ScrollMode.AUTO)
                         ),
                     ], expand=True),
-                    ft.Container(
-                        bgcolor="#3c9fae", 
-                        border_radius=ft.border_radius.all(255),
-                        content=ft.Text("+", weight=ft.FontWeight.BOLD, color="#e2e7ea", size=24),
-                        width=50,
-                        height=50,
-                        alignment=ft.alignment.center,
-                        ink=True,
-                        on_click=in_create,
-                        margin=ft.margin.all(20),
-                        right=0,
-                        bottom=0,
-                    )
+                    pt_button.FloatingButton(in_create)
                 ])
             )
         
-        # for create pill schedile
+        # for create pill schedule
         create_view_overlay = ft.Container(
             bgcolor="#000000",
             expand=True,
