@@ -2,6 +2,9 @@ from flet_mvc import FletController
 import flet as ft
 
 class ScheduleController(FletController):
+    def reload(self):
+        self.page.update()
+    
     def nav_schedule(self, e):
         # Route change to login view (main)
         self.page.go("/schedule")

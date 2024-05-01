@@ -69,6 +69,12 @@ def main(page: ft.Page):
     page.window_width = 1280
     page.on_route_change = routes_handler.route_change  # route change
 
+    # Resize global settings
+    def page_resize(e):
+        return [page.window_width, page.window_height]
+    
+    page.on_resize = page_resize
+
     # Run PillTracker
     page.go(page.route)
 
