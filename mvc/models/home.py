@@ -6,3 +6,7 @@ class HomeModel(FletModel):
     @data
     def totalconsumption(self):
         return ""
+    
+    @data
+    def username(self):
+        return ""

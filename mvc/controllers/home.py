@@ -2,6 +2,7 @@ from flet_mvc import FletController
 import flet as ft
 
 class HomeController(FletController):
+  
     def nav_schedule(self, e):
         self.page.go("/schedule")
     
