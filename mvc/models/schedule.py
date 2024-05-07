@@ -6,3 +6,7 @@ class ScheduleModel(FletModel):
     @data
     def dummy(self):
         return ""
+    
+    @data
+    def username(self):
+        return ""

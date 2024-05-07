@@ -13,7 +13,7 @@ class HomeView(FletView):
                 gradient=ft.LinearGradient(colors=["#1e2125", "#201925", "#1e2125"], rotation=math.degrees(-33)),
                 content=
                 ft.Column([
-                    pt_navbar.Navbar(title="Home",to_home=controller.nav_home, to_schedule=controller.nav_schedule, to_account=controller.nav_account),
+                    pt_navbar.Navbar(title="Home", model=model, to_home=controller.nav_home, to_schedule=controller.nav_schedule, to_account=controller.nav_account),
                     ft.Container(padding=ft.padding.symmetric(horizontal=70, vertical=20), content=
                         ft.ResponsiveRow([
                             ft.Column([
@@ -39,7 +39,7 @@ class HomeView(FletView):
                                 )
                             ], col=8),
                             ft.Column([
-                                ft.Text("Refill Reminder", size=24, weight=ft.FontWeight.BOLD, color="#e2e7ea"),
+                                ft.Text("Refill Reminders", size=24, weight=ft.FontWeight.BOLD, color="#e2e7ea"),
                                 ft.Text("All your pill bottles are plenty enough, take more!", size=16,color="#e2e7ea", italic=True),
                             ], col=4)
                         ], spacing=50)

@@ -1,7 +1,9 @@
 from flet_mvc import FletController, alert
 import flet as ft
 from core.dal import DAL
+
 from mvc.models.home import HomeModel
+from mvc.models.schedule import ScheduleModel
 
 class LoginController(FletController):
     def nav_register(self, e):
@@ -15,7 +17,9 @@ class LoginController(FletController):
         if isValid == 1:
             self.alert("Login Success", alert.SUCCESS)
             home_model = HomeModel()
+            schedule_model = ScheduleModel()
             home_model.username.set_value(self.model.username())
+            schedule_model.username.set_value(self.model.username())
             print(home_model.username)
             self.page.go("/home")
         else:
