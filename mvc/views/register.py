@@ -110,7 +110,7 @@ class RegisterView(FletView):
 
                     ft.Row([
                         pt_button.Button(text="Cancel", on_click=controller.nav_login, btn_type="secondary"),
-                        pt_button.Button(text="Register", on_click=controller.dummy_func,)
+                        pt_button.Button(text="Register", on_click=controller.register_account,)
                     ], alignment=ft.MainAxisAlignment.CENTER
                     )
                     

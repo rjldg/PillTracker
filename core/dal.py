@@ -1,8 +1,7 @@
-# DAL - Data Access Layer
-
 from sqlalchemy import *
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.exc import IntegrityError
 from dotenv import load_dotenv
 import os
 
@@ -34,4 +33,27 @@ class DAL:
 
     def validate_login(username, pw_input):
         result = session.execute(func.public.validate_login(username, pw_input)).scalar()
+        session.commit()
         return result
+    
+    def create_user(fn, ln, username, email, pw, gender):
+        query = text("CALL createuser(:fn, :ln, :username, :email, :password, :gender)")
+        parameters = {"fn": fn, "ln": ln, "username": username, "email": email, "password": pw, "gender": gender}
+        try:
+            session.execute(query, parameters)
+            session.commit()
+            return True
+        except IntegrityError as e:
+            print(f"Error: {e}")
+            return False
+        except Exception as e:
+            session.rollback()
+            print(f"Error: {e}")
+            return False
+    
+    '''
+    "SELECT * FROM user WHERE id=:param",
+        {"param":5}
+
+    text("SELECT * FROM KLSE WHERE Stock LIKE :param"),{"param":Stock}
+    '''
