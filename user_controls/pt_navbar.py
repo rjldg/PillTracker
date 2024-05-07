@@ -11,10 +11,10 @@ class Navbar(ft.ResponsiveRow):
                 controls=[
                     ft.Column([
                         ft.Text(title, size=32, weight=ft.FontWeight.BOLD, color="#e2e7ea", text_align=ft.TextAlign.CENTER),
-                    ], col=7, alignment=ft.MainAxisAlignment.CENTER),
+                    ], col=6, alignment=ft.MainAxisAlignment.CENTER),
                     ft.Column([
                         ft.Container(
-                            content=ft.Text("Home", size=24, color="#e2e7ea"),
+                            content=ft.Text("Home", size=20, color="#e2e7ea"),
                             ink=True, margin=ft.Margin(left=20, right=20, top=0, bottom=0),
                             width=100, height=70, alignment=ft.alignment.center,
                             on_click=to_home,
@@ -22,7 +22,7 @@ class Navbar(ft.ResponsiveRow):
                     ], col=2),
                     ft.Column([
                         ft.Container(
-                            content=ft.Text("Schedule", size=24, color="#e2e7ea"),
+                            content=ft.Text("Schedule", size=20, color="#e2e7ea"),
                             ink=True, margin=ft.Margin(left=20, right=20, top=0, bottom=0),
                             width=100, height=70, alignment=ft.alignment.center,
                             on_click=to_schedule,
@@ -30,12 +30,15 @@ class Navbar(ft.ResponsiveRow):
                     ], col=2),
                     ft.Column([
                         ft.Container(
-                            content=ft.Image(src="/images/account_circle.png"),
-                            ink=True, margin=ft.Margin(left=20, right=20, top=0, bottom=0),
-                            width=70, height=70, alignment=ft.alignment.center,
-                            on_click=to_account,
+                            content=ft.Row([
+                                ft.Image(src="/images/account_circle.png", height=40, width=40),
+                                ft.Text("John Paul", color="#e2e7ea", size=18)
+                            ], alignment=ft.CrossAxisAlignment.CENTER),
+                            margin=ft.Margin(left=20, right=20, top=0, bottom=0),
+                            height=70, alignment=ft.alignment.center,
+                            on_click=to_account, ink=True,
                         ),
-                    ], col=1),
+                    ], col=2),
                 ]
             )
         )
