@@ -4,6 +4,7 @@ from core.dal import DAL
 
 from mvc.models.home import HomeModel
 from mvc.models.schedule import ScheduleModel
+from mvc.models.account import AccountModel
 
 from mvc.controllers.home import HomeController
 
@@ -24,11 +25,14 @@ class LoginController(FletController):
             
             schedule_model = ScheduleModel()
 
+            account_model = AccountModel()
+
             self.alert("Login Success", alert.SUCCESS)
             
             home_model.username.set_value(self.model.username())
             schedule_model.username.set_value(self.model.username())
-            
+            account_model.logged_in_username.set_value(self.model.username())
+
             home_controller.build()
 
             self.page.go("/home")

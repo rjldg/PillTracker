@@ -60,6 +60,74 @@ class DAL:
             session.rollback()
             print(f"Error: {e}")
             return False
+        
+    def update_user(loggedin_username, fn, ln, username, email, pw, gender):
+        isUsernameChanged = False
+        isPasswordChanged = False
+
+        if(fn != ""):
+            update_fn = text(f"UPDATE \"PillTracker_User\" SET \"First_Name\" = '{fn}' WHERE \"Username\" = '{loggedin_username}'")
+            try:
+                session.execute(update_fn)
+                session.commit()
+            except Exception as e:
+                session.rollback()
+                print(f"Error: {e}")
+                return False
+            
+        if(ln != ""):
+            update_ln = text(f"UPDATE \"PillTracker_User\" SET \"Last_Name\" = '{ln}' WHERE \"Username\" = '{loggedin_username}'")
+            try:
+                session.execute(update_ln)
+                session.commit()
+            except Exception as e:
+                session.rollback()
+                print(f"Error: {e}")
+                return False
+            
+        if(username != ""):
+            update_username = text(f"UPDATE \"PillTracker_User\" SET \"Username\" = '{username}' WHERE \"Username\" = '{loggedin_username}'")
+            try:
+                session.execute(update_username)
+                session.commit()
+                isUsernameChanged = True
+            except Exception as e:
+                session.rollback()
+                print(f"Error: {e}")
+                return False
+            
+        if(email != ""):
+            update_email = text(f"UPDATE \"PillTracker_User\" SET \"Email\" = '{email}' WHERE \"Username\" = '{loggedin_username}'")
+            try:
+                session.execute(update_email)
+                session.commit()
+            except Exception as e:
+                session.rollback()
+                print(f"Error: {e}")
+                return False
+            
+        if(pw != ""):
+            update_pw = text(f"UPDATE \"PillTracker_User\" SET \"Password\" = '{pw}' WHERE \"Username\" = '{loggedin_username}'")
+            try:
+                session.execute(update_pw)
+                session.commit()
+                isPasswordChanged = True
+            except Exception as e:
+                session.rollback()
+                print(f"Error: {e}")
+                return False
+            
+        if(gender != ""):
+            update_gender = text(f"UPDATE \"PillTracker_User\" SET \"Gender\" = '{gender}' WHERE \"Username\" = '{loggedin_username}'")
+            try:
+                session.execute(update_gender)
+                session.commit()
+            except Exception as e:
+                session.rollback()
+                print(f"Error: {e}")
+                return False
+
+        return (True, isUsernameChanged, isPasswordChanged)
 
     def read_pills_home_page(username:str):
         '''Read user_ID corresponding to logged in user's username'''

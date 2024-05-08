@@ -75,7 +75,7 @@ class RegisterView(FletView):
                                 ], col=6
                                 ),
                                 ft.Column([
-                                    ft.Radio(label="Female", value="Not Male", fill_color={ft.MaterialState.DEFAULT: "#4c5158", ft.MaterialState.SELECTED: "#3c9fae"})
+                                    ft.Radio(label="Female", value="Female", fill_color={ft.MaterialState.DEFAULT: "#4c5158", ft.MaterialState.SELECTED: "#3c9fae"})
                                 ], col=6
                                 ),
                             ], width=300

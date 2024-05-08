@@ -82,18 +82,18 @@ class ScheduleView(FletView):
                     border_radius=ft.border_radius.only(top_right=25, bottom_right=25), 
                     border=ft.border.all(1, "#000000"), 
                     content=ft.Column([
-                        ft.Text("Create Pill Schedule", size=28, color="#e2e7ea", weight=ft.FontWeight.BOLD,),
+                        ft.Text("Create Pill Information & Schedule", size=28, color="#e2e7ea", weight=ft.FontWeight.BOLD,),
                         ft.ResponsiveRow([
                             ft.Text("Pill Name:", size=20, color="#e2e7ea", col=3),
-                            ft.Column(col=9, controls=[pt_textfield.Field(label="Name", model=model.dummy)])
+                            ft.Column(col=9, controls=[pt_textfield.Field(label="Name of Pill", model=model.dummy)])
                         ], vertical_alignment=ft.CrossAxisAlignment.CENTER),
                         ft.ResponsiveRow([
                             ft.Text("Total Pills:", size=20, color="#e2e7ea", col=3),
-                            ft.Column(col=9, controls=[pt_textfield.Field(label="Total Pills in Bottle", model=model.dummy)])
+                            ft.Column(col=9, controls=[pt_textfield.Field(label="Total Amount of Pills", model=model.dummy)])
                         ], vertical_alignment=ft.CrossAxisAlignment.CENTER),
                         ft.ResponsiveRow([
                             ft.Text("Daily Intake:", size=20, color="#e2e7ea", col=3),
-                            ft.Column(col=9, controls=[pt_textfield.Field(label="Take n times a day", model=model.dummy)])
+                            ft.Column(col=9, controls=[pt_textfield.Field(label="Daily Pill Intake", model=model.dummy)])
                         ], vertical_alignment=ft.CrossAxisAlignment.CENTER),
                         ft.Row([
                             pt_button.Button(text="Cancel", on_click=in_create, btn_type="secondary"),
