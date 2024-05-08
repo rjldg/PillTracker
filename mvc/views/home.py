@@ -6,7 +6,7 @@ from user_controls import *
 class HomeView(FletView):
     def __init__(self, controller, model):
         adh_data = chart_data.AdhData(expected_datapoints=[5,6,4,5,5,8,7], actual_datapoints=[5,5,4,6,4,10,5])
-
+        
         view = [
             ft.Container(
                 expand=True,
@@ -18,9 +18,7 @@ class HomeView(FletView):
                         ft.ResponsiveRow([
                             ft.Column([
                                 ft.Text("Daily Medication", size=24, weight=ft.FontWeight.BOLD, color="#e2e7ea"),
-                                pt_pilltaken.Control(medname="Darkacetamol"),
-                                pt_pilltaken.Control(medname="Blackezol", defaultvalue=2),
-                                pt_pilltaken.Control(medname="Anti-Gluthathione", defaultvalue=1),
+                                ft.Column(ref=model.home_pillControls),
                                 ft.Text("Adherance Statistics", size=24, weight=ft.FontWeight.BOLD, color="#e2e7ea"),
                                 ft.LineChart(
                                     data_series=adh_data.adherance_data,

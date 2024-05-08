@@ -19,22 +19,32 @@ engine = create_engine(connectionString)
 Session = sessionmaker(bind=engine)
 session = Session()
 
-'''
-# For testing the connection
+# For successful database connection indicator
 try:
     with engine.connect() as connectionString:
         print('Successfully connected to the PostgreSQL database')
 except Exception as ex:
     print(f'Sorry failed to connect: {ex}')
-'''
+
 
 """ DATA ACCESS LAYER """
+
 class DAL:
 
     def validate_login(username, pw_input):
         result = session.execute(func.public.validate_login(username, pw_input)).scalar()
         session.commit()
         return result
+    
+    def increment_pills_taken(pill_id, date_today):
+        new_value = session.execute(func.public.increment_pills_taken(pill_id, date_today)).scalar()
+        session.commit()   
+        return new_value
+    
+    def decrement_pills_taken(pill_id, date_today):
+        new_value = session.execute(func.public.decrement_pills_taken(pill_id, date_today)).scalar()
+        session.commit()   
+        return new_value
     
     def create_user(fn, ln, username, email, pw, gender):
         query = text("CALL createuser(:fn, :ln, :username, :email, :password, :gender)")
@@ -50,6 +60,23 @@ class DAL:
             session.rollback()
             print(f"Error: {e}")
             return False
+
+    def read_pills_home_page(username:str):
+        '''Read user_ID corresponding to logged in user's username'''
+        get_user_id_query = text(f"SELECT \"User_ID\" FROM \"PillTracker_User\" WHERE \"Username\" = '{username}';")
+        user_id = session.execute(get_user_id_query).scalar()
+        session.commit()
+
+        '''Get pill information from the user_ID that was read'''
+        get_pillsInfo_query = text(f"SELECT \"Pill_Name\", \"Pills_Taken\", \"Pill_ID\" FROM \"Pills\" WHERE \"User_ID\" = {user_id};")
+        pillsInfo = session.execute(get_pillsInfo_query).fetchall()
+        session.commit()
+        pillInfo = [list(row) for row in pillsInfo]
+
+        return pillInfo
+
+
+
     
     '''
     "SELECT * FROM user WHERE id=:param",

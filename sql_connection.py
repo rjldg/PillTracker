@@ -1,6 +1,7 @@
 from sqlalchemy import create_engine
 from dotenv import load_dotenv
 import os
+from core.dal import DAL
 
 load_dotenv()
 
@@ -19,3 +20,6 @@ try:
         print('Successfully connected to the PostgreSQL database')
 except Exception as ex:
     print(f'Sorry failed to connect: {ex}')
+
+
+DAL.read_pills_home_page('jpcruz')
