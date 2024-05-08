@@ -36,5 +36,8 @@ class LoginController(FletController):
             home_controller.build()
 
             self.page.go("/home")
+
+            self.model.username.reset()
+            self.model.password.reset()
         else:
             self.alert("Login Failed", alert.WARNING)
