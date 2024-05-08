@@ -12,7 +12,8 @@ class AccountController(FletController):
             
             if(isUsernameChanged or isPasswordChanged):
                 self.alert("Username or password was changed. Please log-in again.", alert.INFO)
-                self.page.go("/")
+                self.nav_login(e)
+                self.clear_all()
             else:
                 self.alert("Updated user information successfully.".format(self.model.logged_in_username()), alert.SUCCESS) if isUpdated else self.alert("FAILED TO UPDATE USER INFORMATION. Please fill up all text fields. Please check if email address is valid.", alert.WARNING)
 
@@ -22,6 +23,16 @@ class AccountController(FletController):
     
     def nav_home(self, e):
         self.page.go("/home")
+        self.clear_all()
+
+    def clear_all(self):
+        self.model.firstname.reset()
+        self.model.lastname.reset()
+        self.model.username.reset()
+        self.model.email.reset()
+        self.model.password.reset()
+        self.model.confirm_password.reset()
+        self.model.gender.reset()
     
     def dummy_func(self, e):
         self.alert("ssh-keygen")
