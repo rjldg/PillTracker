@@ -21,7 +21,7 @@ class ScheduleController(FletController):
             for pill in self.model.sched_pillsInfo.value
         ])
 
-    def build_reload(self):
+    def build_and_update(self):
         self.model.sched_pillsInfo.reset()
         self.model.sched_pillControls.reset()
 
@@ -33,7 +33,7 @@ class ScheduleController(FletController):
             for pill in self.model.sched_pillsInfo.value
         ])
 
-        self.reload()
+        self.page.update()
 
 
     def create_new_pill(self, e=None):
@@ -63,7 +63,7 @@ class ScheduleController(FletController):
 
         self.alert(f"Deleted {control.medname} successfully.", alert.SUCCESS) if isDeleted else self.alert(f"Failed to delete {control.medname}.", alert.WARNING)
 
-        self.build_reload()
+        self.build_and_update()
         self.build_home()
 
     def build_home(self):
