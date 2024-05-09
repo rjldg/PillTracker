@@ -7,6 +7,7 @@ from mvc.models.schedule import ScheduleModel
 from mvc.models.account import AccountModel
 
 from mvc.controllers.home import HomeController
+from mvc.controllers.schedule import ScheduleController
 
 from mvc.views.home import HomeView
 
@@ -24,6 +25,7 @@ class LoginController(FletController):
             home_controller = HomeController(ft.Page, home_model)
             
             schedule_model = ScheduleModel()
+            schedule_controller = ScheduleController(ft.Page, schedule_model)
 
             account_model = AccountModel()
 
@@ -34,6 +36,7 @@ class LoginController(FletController):
             account_model.logged_in_username.set_value(self.model.username())
 
             home_controller.build()
+            schedule_controller.build()
 
             self.page.go("/home")
 

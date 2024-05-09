@@ -61,6 +61,26 @@ class DAL:
             print(f"Error: {e}")
             return False
         
+    def create_pill(username, pn, pta, pdi):
+        '''Read user_ID corresponding to logged in user's username'''
+        get_user_id_query = text(f"SELECT \"User_ID\" FROM \"PillTracker_User\" WHERE \"Username\" = '{username}';")
+        user_id = session.execute(get_user_id_query).scalar()
+        session.commit()
+
+        query = text("CALL createpill(:user_id, :pill_name, :pill_total_amt, :pill_daily_intake, :pill_notes);")
+        parameters = {"user_id": user_id, "pill_name": pn, "pill_total_amt": pta, "pill_daily_intake": pdi, "pill_notes": ""}
+        try:
+            session.execute(query, parameters)
+            session.commit()
+            return True
+        except IntegrityError as e:
+            print(f"Error: {e}")
+            return False
+        except Exception as e:
+            session.rollback()
+            print(f"Error: {e}")
+            return False
+        
     def update_user(loggedin_username, fn, ln, username, email, pw, gender):
         isUsernameChanged = False
         isPasswordChanged = False
@@ -117,6 +137,32 @@ class DAL:
         pillInfo = [list(row) for row in pillsInfo]
 
         return pillInfo
+    
+    def read_pills_schedule_page(username:str):
+        '''Read user_ID corresponding to logged in user's username'''
+        get_user_id_query = text(f"SELECT \"User_ID\" FROM \"PillTracker_User\" WHERE \"Username\" = '{username}';")
+        user_id = session.execute(get_user_id_query).scalar()
+        session.commit()
+
+        '''Get pill information from the user_ID that was read'''
+        get_pillsInfo_query = text(f"SELECT \"Pill_Name\", \"Pill_Daily_Intake\", \"Pill_Total_Amount\",\"Pill_ID\" FROM \"Pills\" WHERE \"User_ID\" = {user_id};")
+        pillsInfo = session.execute(get_pillsInfo_query).fetchall()
+        session.commit()
+        pillInfo = [list(row) for row in pillsInfo]
+        print(pillInfo)
+
+        return pillInfo
+    
+    def delete_pill(pill_id):
+        query = text(f"DELETE FROM \"Pills\" WHERE \"Pill_ID\" = {pill_id}")
+        try:
+            session.execute(query)
+            session.commit()
+            return True
+        except Exception as e:
+            session.rollback()
+            print(f"Error: {e}")
+            return False
 
 
 
