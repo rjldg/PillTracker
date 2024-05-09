@@ -57,7 +57,7 @@ class ScheduleView(FletView):
                 content=
                 ft.Stack([
                     ft.Column([
-                        pt_navbar.Navbar(title="Home", model=model, to_home=controller.nav_home, to_schedule=controller.nav_schedule, to_account=controller.nav_account),
+                        pt_navbar.Navbar(title="Schedule", model=model, to_home=controller.nav_home, to_schedule=controller.nav_schedule, to_account=controller.nav_account),
                         ft.Container(content=ft.SearchBar(
                             divider_color="#3c9fae",
                             bar_hint_text="Search for Pills",
