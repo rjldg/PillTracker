@@ -149,7 +149,6 @@ class DAL:
         pillsInfo = session.execute(get_pillsInfo_query).fetchall()
         session.commit()
         pillInfo = [list(row) for row in pillsInfo]
-        print(pillInfo)
 
         return pillInfo
     

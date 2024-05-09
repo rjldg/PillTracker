@@ -54,7 +54,6 @@ class ScheduleController(FletController):
                 return -1
         
     def delete_pill(self, control):
-        print("DELETING PILL WITH ID: ", control.pill_id)
         isDeleted = DAL.delete_pill(control.pill_id)
 
         self.alert(f"Deleted {control.medname} successfully.", alert.SUCCESS) if isDeleted else self.alert(f"Failed to delete {control.medname}.", alert.WARNING)

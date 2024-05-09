@@ -22,7 +22,6 @@ class HomeController(FletController):
     def increment_pills_taken(self, control):
         new_value = DAL.increment_pills_taken(control.pill_id, datetime.today().strftime("%Y-%m-%d"))
 
-        print("New_Value: ", new_value)
         control.defaultvalue = new_value
 
         self.build()    # Refresh the list of pilltaken controls
@@ -30,7 +29,6 @@ class HomeController(FletController):
     def decrement_pills_taken(self, control):
         new_value = DAL.decrement_pills_taken(control.pill_id, datetime.today().strftime("%Y-%m-%d"))
 
-        print("New_Value: ", new_value)
         control.defaultvalue = new_value
 
         self.build()    # Refresh the list of pilltaken controls
