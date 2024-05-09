@@ -18,8 +18,13 @@ class LoginController(FletController):
 
     def validate_login(self, e=None):
         # Validate login credentials (username and password)
-        #                                                                             Im tired typing reevespogi and waffles over and over again
-        isValid = DAL.validate_login(self.model.username(), self.model.password()) or (self.model.username() == "a" and self.model.password() == "a")
+        #         Im tired typing reevespogi and waffles over and over again
+        isValid = (self.model.username() == "a" and self.model.password() == "a")
+        if not isValid:
+            isValid = DAL.validate_login(self.model.username(), self.model.password())
+        else:
+            self.model.username.set_value("jptcruz")
+            self.model.password.set_value("waffle")
         if isValid == 1:
             home_model = HomeModel()
             home_controller = HomeController(ft.Page, home_model)
