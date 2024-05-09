@@ -4,6 +4,9 @@ import flet as ft
 from user_controls import *
 from core.dal import DAL
 
+from mvc.models.home import HomeModel
+from mvc.controllers.home import HomeController
+
 class ScheduleController(FletController):
 
     def build(self):
@@ -42,7 +45,9 @@ class ScheduleController(FletController):
             print(isPillCreated)
             if isPillCreated is True:
                 self.alert("Pill '{}' successfully.".format(self.model.pill_name()), alert.SUCCESS)
+
                 self.build()
+                self.build_home()
                 self.reload()
 
                 self.model.pill_name.reset()
@@ -59,7 +64,12 @@ class ScheduleController(FletController):
         self.alert(f"Deleted {control.medname} successfully.", alert.SUCCESS) if isDeleted else self.alert(f"Failed to delete {control.medname}.", alert.WARNING)
 
         self.build_reload()
+        self.build_home()
 
+    def build_home(self):
+        home_model = HomeModel()
+        home_controller = HomeController(ft.Page, home_model)
+        home_controller.build()
 
     def reload(self):
         self.page.update()
