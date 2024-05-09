@@ -13,13 +13,13 @@ class AccountController(FletController):
             if(isUsernameChanged or isPasswordChanged):
                 self.alert("Username or password was changed. Please log-in again.", alert.INFO)
                 self.nav_login(e)
-                self.clear_all()
             else:
                 self.alert("Updated user information successfully.".format(self.model.logged_in_username()), alert.SUCCESS) if isUpdated else self.alert("FAILED TO UPDATE USER INFORMATION. Please fill up all text fields. Please check if email address is valid.", alert.WARNING)
 
     def nav_login(self, e):
         # Route change to login view (main)
         self.page.go("/")
+        self.clear_all()
     
     def nav_home(self, e):
         self.page.go("/home")
