@@ -12,7 +12,7 @@ class AccountView(FletView):
                 expand=True,
                 content=ft.Column([
                     ft.Row([
-                        ft.Text("Account", size=48),
+                        ft.Text("Edit Account Information", size=48),
                     ], alignment=ft.MainAxisAlignment.CENTER
                     ),
 
@@ -75,7 +75,7 @@ class AccountView(FletView):
                                 ], col=6
                                 ),
                                 ft.Column([
-                                    ft.Radio(label="Female", value="Not Male", fill_color={ft.MaterialState.DEFAULT: "#4c5158", ft.MaterialState.SELECTED: "#3c9fae"})
+                                    ft.Radio(label="Female", value="Female", fill_color={ft.MaterialState.DEFAULT: "#4c5158", ft.MaterialState.SELECTED: "#3c9fae"})
                                 ], col=6
                                 ),
                             ], width=300
@@ -111,7 +111,7 @@ class AccountView(FletView):
                     ft.Row([
                         pt_button.Button(text="Sign Out", on_click=controller.nav_login, btn_type="warning"),
                         pt_button.Button(text="Cancel", on_click=controller.nav_home, btn_type="secondary"),
-                        pt_button.Button(text="Confirm", on_click=controller.dummy_func,)
+                        pt_button.Button(text="Confirm", on_click=controller.update_user_information)
                     ], alignment=ft.MainAxisAlignment.CENTER
                     )
                     

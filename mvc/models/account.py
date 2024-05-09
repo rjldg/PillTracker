@@ -34,3 +34,7 @@ class AccountModel(FletModel):
     @data
     def confirm_password(self):
         return ""
+    
+    @data
+    def logged_in_username(self):
+        return ""
