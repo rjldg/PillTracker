@@ -4,19 +4,19 @@ import math
 from user_controls import pt_textfield, pt_button
 
 class OverlayPanel(ft.Container):
-    def __init__(self, toggle):
+    def __init__(self, toggle, visible=False, opacity=0.3):
         super().__init__(
             bgcolor="#000000",
             expand=True,
-            opacity=0.3,
+            opacity=opacity,
             animate_opacity=750,
-            visible=False,
+            visible=visible,
             on_click=toggle,
             # ref=model.create_view_overlay,
         )
 
 class Panel(ft.Container):
-    def __init__(self, model_pillname, model_pilltotal, model_dailyintake, controller, toggle):
+    def __init__(self, model_pillname, model_pilltotal, model_dailyintake, controller, toggle, offset=ft.transform.Offset(-1,0)):
         super().__init__(
             offset=ft.transform.Offset(-1,0),
             animate_offset=ft.animation.Animation(750, ft.AnimationCurve.EASE_OUT_QUINT),

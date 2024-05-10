@@ -3,7 +3,8 @@ import flet as ft
 import math
 from user_controls import *
 
-class ScheduleView(FletView):    
+class ScheduleView(FletView):   
+    is_create = False 
     def __init__(self, controller, model):
         def in_create(e=None):
             self.is_create = not self.is_create # toggle
@@ -49,14 +50,19 @@ class ScheduleView(FletView):
             )
         
         # for create pill schedule
-        create_view_overlay = createsched_view.Panel(
+        create_view = createsched_view.Panel(
             model_pillname=model.pill_name, 
             model_pilltotal=model.pill_total_amt, 
             model_dailyintake=model.pill_daily_intake,
             controller=controller,
             toggle=in_create,
+            offset=ft.transform.Offset(-1,0), 
         )
-        create_view = createsched_view.OverlayPanel(toggle=in_create)
+        create_view_overlay = createsched_view.OverlayPanel(
+            toggle=in_create, 
+            visible=False,
+            opacity=0,
+        )
         
         view = [
             ft.Stack(expand=True, controls=[
