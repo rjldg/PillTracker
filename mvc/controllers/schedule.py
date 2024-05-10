@@ -7,21 +7,7 @@ from core.dal import DAL
 from mvc.models.home import HomeModel
 from mvc.controllers.home import HomeController
 
-class ScheduleController(FletController):
-    is_create = False
-    def in_create(self, create_view, create_view_overlay, control):
-        self.is_create = not self.is_create # toggle
-        print(create_view, create_view_overlay)
-        if self.is_create:
-            create_view_overlay.visible = True
-            create_view.offset = ft.transform.Offset(0,0)
-            create_view_overlay.opacity = 0.3
-        else:
-            create_view.offset = ft.transform.Offset(-1,0)
-            create_view_overlay.opacity = 0
-            create_view_overlay.visible = False
-        control.update()
-    
+class ScheduleController(FletController):    
     def build(self):
         self.model.sched_pillsInfo.reset()
         self.model.sched_pillControls.reset()
@@ -30,7 +16,7 @@ class ScheduleController(FletController):
         self.model.sched_pillsInfo.set_value(sorted(self.model.sched_pillsInfo.value, key=lambda x: x[0]))
 
         self.model.sched_pillControls.set_value([
-            pt_schedule.Control(medname=pill[0], dailyintake=pill[1], totalpills=pill[2], pill_id=pill[3], controller=self, panel=self.model.create_view, paneloverlay=self.model.create_view_overlay)
+            pt_schedule.Control(medname=pill[0], dailyintake=pill[1], totalpills=pill[2], pill_id=pill[3], controller=self)
             for pill in self.model.sched_pillsInfo.value
         ])
 
@@ -42,7 +28,7 @@ class ScheduleController(FletController):
         self.model.sched_pillsInfo.set_value(sorted(self.model.sched_pillsInfo.value, key=lambda x: x[0]))
 
         self.model.sched_pillControls.set_value([
-            pt_schedule.Control(medname=pill[0], dailyintake=pill[1], totalpills=pill[2], pill_id=pill[3], controller=self, panel=self.model.create_view, paneloverlay=self.model.create_view_overlay)
+            pt_schedule.Control(medname=pill[0], dailyintake=pill[1], totalpills=pill[2], pill_id=pill[3], controller=self)
             for pill in self.model.sched_pillsInfo.value
         ])
 

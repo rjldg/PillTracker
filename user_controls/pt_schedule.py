@@ -30,7 +30,7 @@ bs = ft.BottomSheet(
 )
 
 class Control(ft.Container):
-    def __init__(self, medname:str, dailyintake, totalpills, pill_id, controller, panel, paneloverlay):
+    def __init__(self, medname:str, dailyintake, totalpills, pill_id, controller):
         self.pill_id = pill_id
         self.medname = medname
 
