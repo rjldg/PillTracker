@@ -2,37 +2,52 @@ import flet as ft
 import math
 from user_controls import createsched_view, pt_textfield, pt_button
 
-def show_bs(e):
-    bs.open = True
-    bs.update()
-
-def close_bs(e):
-    bs.open = False
-    bs.update()
-
-bs = ft.BottomSheet(
-    ft.Container(
-        ft.Column(
-            [
-                pt_textfield.Field(label="Name of Pill", model=None),
-                pt_textfield.Field(label="Total Amount of Pills", model=None),
-                pt_textfield.Field(label="Daily Pill Intake", model=None),
-                ft.Row([
-                    pt_button.Button(text="Cancel", on_click=close_bs, btn_type="secondary"),
-                    pt_button.Button(text="Create Schedule", on_click=close_bs),
-                ], alignment=ft.MainAxisAlignment.END)
-            ],
-            tight=True,
-        ),
-        padding=10,
-    ),
-    open=False,
-)
-
 class Control(ft.Container):
     def __init__(self, medname:str, dailyintake, totalpills, pill_id, controller):
         self.pill_id = pill_id
         self.medname = medname
+
+        def show_bs(e):
+            bs.open = True
+            bs.update()
+
+        def close_bs_cancel(e):
+            bs.open = False
+            bs.update()
+
+        def close_bs_update(e):
+            result = controller.update_pill(u1.value, u2.value, u3.value, pill_id)
+            if result == 1:
+                bs.open = False
+                u1.value = ""
+                u2.value = ""
+                u3.value = ""
+            
+            
+            
+
+        u1 = pt_textfield.Field(label="Updated Name of Pill", model=None)
+        u2 = pt_textfield.Field(label="Updated Total Amount of Pills", model=None)
+        u3 = pt_textfield.Field(label="Updated Daily Pill Intake", model=None)
+
+        bs = ft.BottomSheet(
+            ft.Container(
+                ft.Column(
+                    [
+                        u1,
+                        u2,
+                        u3,
+                        ft.Row([
+                            pt_button.Button(text="Cancel", on_click=close_bs_cancel, btn_type="secondary"),
+                            pt_button.Button(text="Update Schedule", on_click=close_bs_update),
+                        ], alignment=ft.MainAxisAlignment.END)
+                    ],
+                    tight=True,
+                ),
+                padding=10,
+            ),
+            open=False,
+        )
 
         super().__init__(
             gradient=ft.LinearGradient(colors=["#1b1926", "#1e2125"], rotation=math.degrees(-33)),

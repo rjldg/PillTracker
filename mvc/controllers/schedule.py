@@ -56,6 +56,25 @@ class ScheduleController(FletController):
             else: 
                 self.alert("FAILED TO CREATE PILL. Please fill up all text fields. Ensure none of the fields are null or zero.", alert.WARNING)
                 return -1
+            
+    def update_pill(self, new_name, new_total, new_intake, pill_id):
+
+        if(new_total == 0 or new_intake == 0):
+            self.alert("Pill Total Amount or Pill Daily Intake cannot be null or zero.", alert.WARNING)
+            return -1
+        else:
+            isPillUpdated = DAL.update_pill(pill_id, new_name, new_total, new_intake)
+            print(isPillUpdated)
+            if isPillUpdated is True:
+                self.alert("Pill '{}' updated successfully.".format(new_name), alert.SUCCESS)
+
+                self.build_and_update()
+                self.build_home()
+
+                return 1
+            else: 
+                self.alert("FAILED TO UPDATE PILL. Please fill up all text fields. Ensure none of the fields are null or zero.", alert.WARNING)
+                return -1
         
     def delete_pill(self, control):
         isDeleted = DAL.delete_pill(control.pill_id)
