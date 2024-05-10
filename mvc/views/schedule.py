@@ -56,12 +56,14 @@ class ScheduleView(FletView):
             model_dailyintake=model.pill_daily_intake,
             controller=controller,
             toggle=in_create,
-            offset=ft.transform.Offset(-1,0), 
+            offset=ft.transform.Offset(-1,0),
+            ref=model.create_view,
         )
         create_view_overlay = createsched_view.OverlayPanel(
             toggle=in_create, 
             visible=False,
             opacity=0,
+            ref=model.create_view_overlay,
         )
         
         view = [

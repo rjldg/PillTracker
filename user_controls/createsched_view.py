@@ -4,7 +4,7 @@ import math
 from user_controls import pt_textfield, pt_button
 
 class OverlayPanel(ft.Container):
-    def __init__(self, toggle, visible=False, opacity=0.3):
+    def __init__(self, toggle, ref, visible=False, opacity=0.3,):
         super().__init__(
             bgcolor="#000000",
             expand=True,
@@ -12,11 +12,12 @@ class OverlayPanel(ft.Container):
             animate_opacity=750,
             visible=visible,
             on_click=toggle,
+            ref=ref
             # ref=model.create_view_overlay,
         )
 
 class Panel(ft.Container):
-    def __init__(self, model_pillname, model_pilltotal, model_dailyintake, controller, toggle, offset=ft.transform.Offset(-1,0)):
+    def __init__(self, model_pillname, model_pilltotal, model_dailyintake, controller, toggle, ref, offset=ft.transform.Offset(-1,0)):
         super().__init__(
             offset=ft.transform.Offset(-1,0),
             animate_offset=ft.animation.Animation(750, ft.AnimationCurve.EASE_OUT_QUINT),
@@ -25,7 +26,8 @@ class Panel(ft.Container):
             bgcolor="#1e2125", 
             margin=ft.margin.only(right=100), 
             border_radius=ft.border_radius.only(top_right=25, bottom_right=25), 
-            border=ft.border.all(1, "#000000"), 
+            border=ft.border.all(1, "#000000"),
+            ref=ref,
             # ref=model.create_view,
             content=ft.Column([
                 ft.Text("Create Pill Information & Schedule", size=28, color="#e2e7ea", weight=ft.FontWeight.BOLD,),

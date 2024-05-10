@@ -1,8 +1,36 @@
 import flet as ft
 import math
+from user_controls import createsched_view, pt_textfield, pt_button
+
+def show_bs(e):
+    bs.open = True
+    bs.update()
+
+def close_bs(e):
+    bs.open = False
+    bs.update()
+
+bs = ft.BottomSheet(
+    ft.Container(
+        ft.Column(
+            [
+                pt_textfield.Field(label="Name of Pill", model=None),
+                pt_textfield.Field(label="Total Amount of Pills", model=None),
+                pt_textfield.Field(label="Daily Pill Intake", model=None),
+                ft.Row([
+                    pt_button.Button(text="Cancel", on_click=close_bs, btn_type="secondary"),
+                    pt_button.Button(text="Create Schedule", on_click=close_bs),
+                ], alignment=ft.MainAxisAlignment.END)
+            ],
+            tight=True,
+        ),
+        padding=10,
+    ),
+    open=False,
+)
 
 class Control(ft.Container):
-    def __init__(self, medname:str, dailyintake, totalpills, pill_id, controller):
+    def __init__(self, medname:str, dailyintake, totalpills, pill_id, controller, panel, paneloverlay):
         self.pill_id = pill_id
         self.medname = medname
 
@@ -13,6 +41,7 @@ class Control(ft.Container):
             padding=ft.padding.only(left=30, right=30, top=20, bottom=20),
             width=300,
             content=ft.Column([
+                bs,
                 ft.Text(medname, color="#e2e7ea", size=24, weight=ft.FontWeight.BOLD),
                 ft.Text(f"Take {dailyintake} times a day", color="#e2e7ea", size=14,),
                 ft.Text(f"{totalpills} Total Pills", color="#e2e7ea", size=14),
@@ -30,9 +59,9 @@ class Control(ft.Container):
                         content=ft.Text("Update", weight=ft.FontWeight.BOLD, color="#3c9fae", size=14),
                         alignment=ft.alignment.center,
                         ink=True,
-                        on_click=lambda e: print("dummy text!"),
+                        on_click=show_bs,
                         col=6,
                     ),
-                ])
+                ]),
             ])
         )
