@@ -17,6 +17,13 @@ class OverlayPanel(ft.Container):
 
 class Panel(ft.Container):
     def __init__(self, model_pillname, model_pilltotal, model_dailyintake, controller, toggle, offset=ft.transform.Offset(-1,0)):
+        
+        def create_new_pill(e):
+            result = controller.create_new_pill()
+            if result == 1:
+                toggle()
+            controller.reload()
+        
         super().__init__(
             offset=offset,
             animate_offset=ft.animation.Animation(750, ft.AnimationCurve.EASE_OUT_QUINT),
@@ -43,7 +50,7 @@ class Panel(ft.Container):
                 ], vertical_alignment=ft.CrossAxisAlignment.CENTER),
                 ft.Row([
                     pt_button.Button(text="Cancel", on_click=toggle, btn_type="secondary"),
-                    pt_button.Button(text="Create", on_click=controller.create_new_pill),
+                    pt_button.Button(text="Create", on_click=create_new_pill),
                 ],alignment=ft.MainAxisAlignment.END)
             ])
         )
