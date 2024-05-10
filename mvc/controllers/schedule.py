@@ -8,7 +8,6 @@ from mvc.models.home import HomeModel
 from mvc.controllers.home import HomeController
 
 class ScheduleController(FletController):
-
     def build(self):
         self.model.sched_pillsInfo.reset()
         self.model.sched_pillControls.reset()
