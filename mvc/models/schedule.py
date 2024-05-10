@@ -1,9 +1,13 @@
 from flet_mvc import FletModel, data
 import flet as ft
+from user_controls import *
+
+from mvc.controllers.schedule import ScheduleController
+
 
 
 class ScheduleModel(FletModel):
-    
+
     @data
     def username(self):
         return ""
@@ -26,3 +30,4 @@ class ScheduleModel(FletModel):
     @data
     def sched_pillControls(self):
         return []
+

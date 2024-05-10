@@ -162,6 +162,29 @@ class DAL:
             session.rollback()
             print(f"Error: {e}")
             return False
+        
+    def update_pill(pill_id, new_name, new_total, new_intake):
+        try:
+            if new_name != "":
+                update_name = text(f"UPDATE \"Pills\" SET \"Pill_Name\" = '{new_name}' WHERE \"Pill_ID\" = '{pill_id}';")
+                session.execute(update_name)
+                session.commit()
+            
+            if new_total != "":
+                update_total = text(f"UPDATE \"Pills\" SET \"Pill_Total_Amount\" = '{new_total}' WHERE \"Pill_ID\" = '{pill_id}';")
+                session.execute(update_total)
+                session.commit()
+            
+            if new_intake != "":
+                update_intake = text(f"UPDATE \"Pills\" SET \"Pill_Daily_Intake\" = '{new_intake}' WHERE \"Pill_ID\" = '{pill_id}';")
+                session.execute(update_intake)
+                session.commit()
+
+            return True
+        except Exception as e:
+            session.rollback()
+            print(f"Error: {e}")
+            return False
 
 
 
