@@ -43,7 +43,7 @@ class ScheduleController(FletController):
             isPillCreated = DAL.create_pill(self.model.username(), self.model.pill_name(), self.model.pill_total_amt(), self.model.pill_daily_intake())
             print(isPillCreated)
             if isPillCreated is True:
-                self.alert("Pill '{}' successfully.".format(self.model.pill_name()), alert.SUCCESS)
+                self.alert("Pill '{}' created successfully.".format(self.model.pill_name()), alert.SUCCESS)
 
                 self.build()
                 self.build_home()
