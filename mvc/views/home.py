@@ -18,9 +18,10 @@ class HomeView(FletView):
             # If empty:     
             ft.Text("All your pill bottles are plenty enough, take more!", size=16,color="#e2e7ea", italic=True),
             # Else:
+            ft.Column(ref=model.home_refillReminders)
         ]
 
-        refill_reminder_content.extend(refill_list)
+        #refill_reminder_content.extend(model.home_refillReminders.value)
 
         view = [
             ft.Container(

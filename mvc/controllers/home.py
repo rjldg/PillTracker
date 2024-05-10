@@ -10,12 +10,18 @@ class HomeController(FletController):
     def build(self):
         self.model.home_pillsInfo.reset()
         self.model.home_pillControls.reset()
+        self.model.home_refillReminders.reset()
 
         self.model.home_pillsInfo.set_value(DAL.read_pills_home_page(self.model.username.value))
         self.model.home_pillsInfo.set_value(sorted(self.model.home_pillsInfo.value, key=lambda x: x[0]))
 
         self.model.home_pillControls.set_value([
             pt_pilltaken.Control(medname=pill[0], defaultvalue=pill[1], pill_id=pill[2], controller=self)
+            for pill in self.model.home_pillsInfo.value
+        ])
+
+        self.model.home_refillReminders.set_value([
+            pt_refillreminder.Control(medname=pill[0], quantity=pill[3] - pill[1])
             for pill in self.model.home_pillsInfo.value
         ])
 
@@ -31,7 +37,7 @@ class HomeController(FletController):
 
         control.defaultvalue = new_value
 
-        self.build()    # Refresh the list of pilltaken controls
+        self.build()  # Refresh the list of pilltaken controls
 
     def nav_schedule(self, e):
         self.page.go("/schedule")

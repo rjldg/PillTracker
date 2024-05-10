@@ -131,7 +131,7 @@ class DAL:
         session.commit()
 
         '''Get pill information from the user_ID that was read'''
-        get_pillsInfo_query = text(f"SELECT \"Pill_Name\", \"Pills_Taken\", \"Pill_ID\" FROM \"Pills\" WHERE \"User_ID\" = {user_id};")
+        get_pillsInfo_query = text(f"SELECT \"Pill_Name\", \"Pills_Taken\", \"Pill_ID\", \"Pill_Total_Amount\" FROM \"Pills\" WHERE \"User_ID\" = {user_id};")
         pillsInfo = session.execute(get_pillsInfo_query).fetchall()
         session.commit()
         pillInfo = [list(row) for row in pillsInfo]

@@ -22,3 +22,7 @@ class HomeModel(FletModel):
     def home_pillControls(self):
         return []
     
+    @data
+    def home_refillReminders(self):
+        return []
+    
